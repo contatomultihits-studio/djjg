@@ -46,6 +46,8 @@
       overflow: hidden;
     }
 
+    .hero-photo-desktop { display: none; }
+
     .hero-bg {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0; /* fallback p/ inset */
@@ -450,13 +452,28 @@
     /* ── DESKTOP (≥ 768px) ── */
     @media (min-width: 768px) {
       .hero-bg {
-        background-image: url('DJ_JG_03.png') !important;
-        background-position: 72% center !important;
+        background-image: none !important;
+        background: linear-gradient(135deg, #1a0002 0%, #6b0005 50%, #C8000A 100%) !important;
+      }
+      .hero-photo-desktop {
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        width: auto;
+        max-width: 55%;
+        object-fit: contain;
+        object-position: bottom right;
+        z-index: 1;
+        -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+        mask-image: linear-gradient(to left, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
       }
       .hero-content {
         padding: 3rem 5vw 4rem;
         max-width: 520px;
         margin: 0;
+        z-index: 2;
       }
       .hero-socials { gap: 0.75rem; }
 
@@ -514,6 +531,7 @@
   <!-- HERO -->
   <section class="hero" aria-label="Apresentação">
     <div class="hero-bg" aria-hidden="true"></div>
+    <img src="DJ_JG_03.png" class="hero-photo-desktop" alt="DJ JG" aria-hidden="true">
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
       <p class="hero-eyebrow">Open Format · São Paulo</p>
