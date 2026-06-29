@@ -49,9 +49,9 @@
     .hero-bg {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0; /* fallback p/ inset */
-      background-image: url('DJ_JG_03.png');
+      background-image: url('DJ_JG_05.png');
       background-size: cover;
-      background-position: 70% center;
+      background-position: center 20%;
       filter: brightness(0.55);
     }
 
@@ -449,6 +449,10 @@
 
     /* ── DESKTOP (≥ 768px) ── */
     @media (min-width: 768px) {
+      .hero-bg {
+        background-image: url('DJ_JG_03.png') !important;
+        background-position: 72% center !important;
+      }
       .hero-content {
         padding: 3rem 5vw 4rem;
         max-width: 520px;
