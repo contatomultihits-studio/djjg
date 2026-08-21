@@ -494,24 +494,20 @@
     .shorts-grid {
       display: -webkit-flex;
       display: flex;
-      gap: 0.85rem;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
+      -webkit-flex-direction: column;
+      flex-direction: column;
+      gap: 1.25rem;
       margin-top: 1.25rem;
-      padding: 0 1.25rem 0.5rem;
+      padding: 0 1.25rem;
       max-width: 720px;
       margin-left: auto;
       margin-right: auto;
     }
-    .shorts-grid::-webkit-scrollbar { display: none; }
     .shorts-wrap {
       position: relative;
-      -webkit-flex: 0 0 150px;
-      flex: 0 0 150px;
+      width: 100%;
       aspect-ratio: 9 / 16;
       background: var(--gray);
-      scroll-snap-align: start;
     }
     .shorts-wrap iframe {
       position: absolute;
@@ -672,12 +668,11 @@
 
       .shorts-grid {
         max-width: 960px;
-        padding: 0 8vw 0.5rem;
-        overflow-x: visible;
+        padding: 0 8vw;
+        flex-direction: row;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       }
-      .shorts-wrap { flex-basis: auto; }
 
       .locutor-hero { max-width: 960px; padding: 5rem 8vw 3rem; }
       .locutor-section .section-full { padding: 1rem 8vw 5rem; }
@@ -765,6 +760,33 @@
 
   <div class="divider"></div>
 
+  <!-- SHORTS DJ -->
+  <section class="section-full" id="shorts-dj" aria-label="Bastidores em vídeo">
+    <p class="label">Bastidores</p>
+    <div class="shorts-grid">
+      <div class="shorts-wrap">
+        <iframe src="https://www.youtube-nocookie.com/embed/EWGJuTbluVM?rel=0"
+          title="DJ JG Bastidores 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="shorts-wrap">
+        <iframe src="https://www.youtube-nocookie.com/embed/JQy-QXzSFzc?rel=0"
+          title="DJ JG Bastidores 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="shorts-wrap">
+        <iframe src="https://www.youtube-nocookie.com/embed/HZ-hBy8ojy8?rel=0"
+          title="DJ JG Bastidores 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="shorts-wrap">
+        <iframe src="https://www.youtube-nocookie.com/embed/icW8xexFML8?rel=0"
+          title="DJ JG Bastidores 4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
   <!-- VÍDEOS -->
   <section class="section-full" id="videos" aria-label="Sets ao vivo">
     <p class="label">Sets ao vivo</p>
@@ -793,56 +815,6 @@
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen loading="lazy"></iframe>
       </div>
-    </div>
-  </section>
-
-  <!-- SHORTS DJ -->
-  <section class="section-full" id="shorts-dj" aria-label="Bastidores em vídeo">
-    <p class="label">Bastidores</p>
-    <div class="shorts-grid">
-      <div class="shorts-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/EWGJuTbluVM?rel=0"
-          title="DJ JG Bastidores 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="shorts-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/JQy-QXzSFzc?rel=0"
-          title="DJ JG Bastidores 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="shorts-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/HZ-hBy8ojy8?rel=0"
-          title="DJ JG Bastidores 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="shorts-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/icW8xexFML8?rel=0"
-          title="DJ JG Bastidores 4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- PACK -->
-  <section class="pack-section" id="pack" aria-label="Pack de músicas">
-    <div class="pack-inner">
-      <span class="pack-badge">Pack Oficial DJ JG</span>
-      <h2 class="pack-headline">As músicas do meu set<br><em>na sua mão</em></h2>
-      <p class="pack-desc">
-        Sem garimpar no YouTube. Sem arquivo corrompido. As <strong>mesmas faixas que eu uso nas minhas noites</strong> — organizadas, nomeadas e prontas pra você chegar na cabine com confiança.
-      </p>
-      <ul class="pack-features">
-        <li><strong>Funk, Eletrônico e os maiores hits</strong> — o que tá tocando agora</li>
-        <li>Arquivos em <span class="hl">WAV e MP3</span>, sem perda de qualidade</li>
-        <li>Pasta organizada: <strong>nome do artista + música em caixa alta</strong></li>
-        <li><span class="hl">BPM marcado</span> em cada faixa — transição sem enrolação</li>
-        <li>Baixou, <strong>é só arrasar na pista</strong></li>
-      </ul>
-      <a href="https://pay.kiwify.com.br/js2pIS0" class="btn-pack" target="_blank" rel="noopener">
-        Quero o Pack agora ▸
-      </a>
     </div>
   </section>
 
@@ -878,7 +850,7 @@
       <span class="onair-badge">No ar</span>
       <h2 class="locutor-headline">JG <span>Locutor</span></h2>
       <p class="locutor-bio">
-        Além da cabine, <strong>João Guilherme (JG)</strong> constrói carreira no rádio. Hoje é <strong>Coordenador Artístico da Rádio Disney Brasil (91.3 FM)</strong>, em São Paulo, onde cuida da curadoria de conteúdo e programação artística da emissora.<br><br>
+        Além da cabine, <strong>João Guilherme (JG)</strong> constrói carreira no rádio. Hoje está no projeto Artístico da <strong>Rádio Disney Brasil (91.3 FM)</strong>, em São Paulo, onde é voz das chamadas da rádio e coordenação artística da emissora.<br><br>
         Antes disso, passou pela <strong>Rádio Maringá FM</strong> e pela <strong>Rádio Mix FM Maringá</strong> — o ponto de partida da sua relação com o microfone, no Paraná. Uma voz que transita entre a curadoria musical, a locução comercial e a produção de conteúdo pra rádio.
       </p>
       <div class="locutor-tags">
@@ -913,6 +885,29 @@
         </div>
       </div>
     </section>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PACK -->
+  <section class="pack-section" id="pack" aria-label="Pack de músicas">
+    <div class="pack-inner">
+      <span class="pack-badge">Pack Oficial DJ JG</span>
+      <h2 class="pack-headline">As músicas do meu set<br><em>na sua mão</em></h2>
+      <p class="pack-desc">
+        Sem garimpar no YouTube. Sem arquivo corrompido. As <strong>mesmas faixas que eu uso nas minhas noites</strong> — organizadas, nomeadas e prontas pra você chegar na cabine com confiança.
+      </p>
+      <ul class="pack-features">
+        <li><strong>Funk, Eletrônico e os maiores hits</strong> — o que tá tocando agora</li>
+        <li>Arquivos em <span class="hl">WAV e MP3</span>, sem perda de qualidade</li>
+        <li>Pasta organizada: <strong>nome do artista + música em caixa alta</strong></li>
+        <li><span class="hl">BPM marcado</span> em cada faixa — transição sem enrolação</li>
+        <li>Baixou, <strong>é só arrasar na pista</strong></li>
+      </ul>
+      <a href="https://pay.kiwify.com.br/js2pIS0" class="btn-pack" target="_blank" rel="noopener">
+        Quero o Pack agora ▸
+      </a>
+    </div>
   </section>
 
   <!-- FOOTER -->
