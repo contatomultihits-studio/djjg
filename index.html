@@ -624,6 +624,27 @@
       margin: 0 auto;
       text-align: left;
     }
+    .locutor-hero-inner {
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: column-reverse;
+      flex-direction: column-reverse;
+      gap: 1.75rem;
+    }
+    .locutor-hero-photo {
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+      border: 2px solid var(--amber);
+      overflow: hidden;
+    }
+    .locutor-hero-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 4 / 5;
+    }
     .onair-badge {
       display: inline-flex;
       align-items: center;
@@ -773,6 +794,13 @@
       .car-btn { display: -webkit-flex; display: flex; }
 
       .locutor-hero { max-width: 960px; padding: 5rem 8vw 3rem; }
+      .locutor-hero-inner {
+        flex-direction: row;
+        align-items: center;
+        gap: 4rem;
+      }
+      .locutor-hero-text { flex: 1.3; }
+      .locutor-hero-photo { flex: 1; max-width: 360px; margin: 0; }
       .locutor-section .section-full { padding: 1rem 8vw 5rem; }
     }
 
@@ -960,21 +988,28 @@
   <!-- LOCUTOR -->
   <section class="locutor-section" id="locutor" aria-label="JG Locutor">
     <div class="locutor-hero">
-      <span class="onair-badge">No ar</span>
-      <h2 class="locutor-headline">JG <span>Locutor</span></h2>
-      <p class="locutor-bio">
-        Além da cabine, <strong>João Guilherme (JG)</strong> constrói carreira no rádio. Hoje está no projeto Artístico da <strong>Rádio Disney Brasil (91.3 FM)</strong>, em São Paulo, onde é voz das chamadas da rádio e coordenação artística da emissora.<br><br>
-        Antes disso, passou pela <strong>Rádio Maringá FM</strong> e pela <strong>Rádio Mix FM Maringá</strong> — o ponto de partida da sua relação com o microfone, no Paraná. Uma voz que transita entre a curadoria musical, a locução comercial e a produção de conteúdo pra rádio.
-      </p>
-      <div class="locutor-tags">
-        <span class="locutor-tag">Locução</span>
-        <span class="locutor-tag">Coordenação Artística</span>
-        <span class="locutor-tag">Rádio Disney Brasil</span>
-        <span class="locutor-tag">Produção de Conteúdo</span>
+      <div class="locutor-hero-inner">
+        <div class="locutor-hero-text">
+          <span class="onair-badge">No ar</span>
+          <h2 class="locutor-headline">JG <span>Locutor</span></h2>
+          <p class="locutor-bio">
+            Além da cabine, <strong>João Guilherme (JG)</strong> constrói carreira no rádio. Hoje está no projeto Artístico da <strong>Rádio Disney Brasil (91.3 FM)</strong>, em São Paulo, onde é voz das chamadas da rádio e coordenação artística da emissora.<br><br>
+            Antes disso, passou pela <strong>Rádio Maringá FM</strong> e pela <strong>Rádio Mix FM Maringá</strong> — o ponto de partida da sua relação com o microfone, no Paraná. Uma voz que transita entre a curadoria musical, a locução comercial e a produção de conteúdo pra rádio.
+          </p>
+          <div class="locutor-tags">
+            <span class="locutor-tag">Locução</span>
+            <span class="locutor-tag">Coordenação Artística</span>
+            <span class="locutor-tag">Rádio Disney Brasil</span>
+            <span class="locutor-tag">Produção de Conteúdo</span>
+          </div>
+          <a href="https://wa.me/5544991014758?text=Ol%C3%A1%2C%20quero%20falar%20sobre%20loca%C3%A7%C3%A3o%20com%20o%20JG!" class="locutor-cta" target="_blank" rel="noopener">
+            Falar com JG ▸
+          </a>
+        </div>
+        <div class="locutor-hero-photo">
+          <img src="LOCUTOR_JG_03.jpg" alt="JG no microfone, locução ao vivo">
+        </div>
       </div>
-      <a href="https://wa.me/5544991014758?text=Ol%C3%A1%2C%20quero%20falar%20sobre%20loca%C3%A7%C3%A3o%20com%20o%20JG!" class="locutor-cta" target="_blank" rel="noopener">
-        Falar com JG ▸
-      </a>
     </div>
 
     <!-- SHORTS LOCUTOR -->
@@ -986,18 +1021,53 @@
         </button>
         <div class="shorts-grid" id="locutor-track">
         <div class="shorts-wrap">
-          <iframe src="https://www.youtube-nocookie.com/embed/oLB4omDwobM?rel=0"
+          <iframe src="https://www.youtube-nocookie.com/embed/hm28tzOwLXI?rel=0"
             title="JG Locutor 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="shorts-wrap">
-          <iframe src="https://www.youtube-nocookie.com/embed/uLBy2JZCBog?rel=0"
+          <iframe src="https://www.youtube-nocookie.com/embed/_Xc0bnCkOrw?rel=0"
             title="JG Locutor 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="shorts-wrap">
           <iframe src="https://www.youtube-nocookie.com/embed/P9XMCd3HA3U?rel=0"
             title="JG Locutor 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="shorts-wrap">
+          <iframe src="https://www.youtube-nocookie.com/embed/5R0ml1z6Xp8?rel=0"
+            title="JG Locutor 4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="shorts-wrap">
+          <iframe src="https://www.youtube-nocookie.com/embed/EQXN0TT3vLM?rel=0"
+            title="JG Locutor 5" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="shorts-wrap">
+          <iframe src="https://www.youtube-nocookie.com/embed/uLBy2JZCBog?rel=0"
+            title="JG Locutor 6" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="shorts-wrap">
+          <iframe src="https://www.youtube-nocookie.com/embed/DTvCE5AzaVU?rel=0"
+            title="JG Locutor 7" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="shorts-wrap">
+          <iframe src="https://www.youtube-nocookie.com/embed/Ml_9lbHKVcA?rel=0"
+            title="JG Locutor 8" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="shorts-wrap">
+          <iframe src="https://www.youtube-nocookie.com/embed/oLB4omDwobM?rel=0"
+            title="JG Locutor 9" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="shorts-wrap">
+          <iframe src="https://www.youtube-nocookie.com/embed/XZBYNCpSNpM?rel=0"
+            title="JG Locutor 10" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen loading="lazy"></iframe>
         </div>
         </div>
