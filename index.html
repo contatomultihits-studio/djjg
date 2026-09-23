@@ -8,10 +8,12 @@
 
   <!-- Open Graph (WhatsApp, Instagram, Facebook) -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://contrateojg.com/" />
+  <link rel="canonical" href="https://contrateojg.vercel.app/" />
+  <meta property="og:url" content="https://contrateojg.vercel.app/" />
   <meta property="og:title" content="Contrate o João Guilherme — DJ & Locutor" />
   <meta property="og:description" content="João Guilherme (DJ JG) é DJ Open Format e Locutor de São Paulo. Funk, Eletrônico e os maiores hits numa vibe que não para." />
-  <meta property="og:image" content="https://contrateojg.com/DJ_JG_05.png" />
+  <meta property="og:image" content="https://contrateojg.vercel.app/img/og-dj-jg.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="pt_BR" />
@@ -20,7 +22,14 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Contrate o João Guilherme — DJ & Locutor" />
   <meta name="twitter:description" content="João Guilherme (DJ JG) é DJ Open Format e Locutor de São Paulo. Funk, Eletrônico e os maiores hits numa vibe que não para." />
-  <meta name="twitter:image" content="https://contrateojg.com/DJ_JG_05.png" />
+  <meta name="twitter:image" content="https://contrateojg.vercel.app/img/og-dj-jg.jpg" />
+  <link rel="icon" href="favicon.ico" sizes="48x48" />
+  <link rel="icon" href="img/icon-192.png" type="image/png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta name="theme-color" content="#0A0A0A" />
+  <link rel="preload" as="image" href="img/dj-jg-hero-mobile.webp" media="(max-width: 767px)" />
+  <link rel="preload" as="image" href="img/dj-jg-hero-desktop.webp" media="(min-width: 768px)" />
+  <link rel="preconnect" href="https://i.ytimg.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -83,12 +92,12 @@
       transition: color 0.15s, border-color 0.15s;
       -webkit-tap-highlight-color: transparent;
     }
-    .mode-link.mode-dj { border-color: transparent; }
     .mode-link.mode-dj:active,
-    .mode-link.mode-dj:hover { color: var(--yellow); border-color: var(--yellow); }
-    .mode-link.mode-locutor { color: var(--yellow); }
+    .mode-link.mode-dj:hover,
+    .mode-link.mode-dj.is-active { color: var(--yellow); border-color: var(--yellow); }
     .mode-link.mode-locutor:active,
-    .mode-link.mode-locutor:hover { color: var(--yellow); border-color: var(--yellow); }
+    .mode-link.mode-locutor:hover,
+    .mode-link.mode-locutor.is-active { color: var(--amber); border-color: var(--amber); }
 
     /* ── HERO ── */
     .hero {
@@ -109,7 +118,7 @@
     .hero-bg {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0; /* fallback p/ inset */
-      background-image: url('DJ_JG_05.png');
+      background-image: url('img/dj-jg-hero-mobile.webp');
       background-size: cover;
       background-position: center 20%;
       filter: brightness(0.55);
@@ -557,6 +566,49 @@
       border: none;
     }
 
+    /* ── YOUTUBE LEVE (miniatura; o player só carrega ao tocar) ── */
+    .yt-lite {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      border: none;
+      background: #000;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .yt-lite img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.2s;
+    }
+    .yt-play {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 64px; height: 44px;
+      margin: -22px 0 0 -32px;
+      background: rgba(20,20,20,0.8);
+      border-radius: 12px;
+      transition: background 0.15s;
+    }
+    .yt-play::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      margin: -9px 0 0 -6px;
+      border-style: solid;
+      border-width: 9px 0 9px 16px;
+      border-color: transparent transparent transparent #fff;
+    }
+    .yt-lite:hover .yt-play,
+    .yt-lite:focus-visible .yt-play { background: #FF0000; }
+    .yt-lite:hover img { opacity: 0.85; }
+    .locutor-section .yt-lite:hover .yt-play,
+    .locutor-section .yt-lite:focus-visible .yt-play { background: var(--amber); }
+
     /* ── SWIPE HINT (só mobile) ── */
     .swipe-hint {
       display: -webkit-flex;
@@ -826,19 +878,22 @@
 
   <!-- MODE SWITCHER -->
   <nav class="mode-nav" aria-label="Escolher perfil">
-    <a href="#dj" class="mode-link mode-dj">DJ</a>
+    <a href="#dj" class="mode-link mode-dj is-active" aria-current="true">DJ</a>
     <a href="#locutor" class="mode-link mode-locutor">Locutor</a>
   </nav>
 
   <!-- HERO -->
   <section class="hero" id="dj" aria-label="Apresentação">
     <div class="hero-bg" aria-hidden="true"></div>
-    <img src="DJ_JG_03.png" class="hero-photo-desktop" alt="DJ JG" aria-hidden="true">
+    <picture>
+      <source media="(min-width: 768px)" srcset="img/dj-jg-hero-desktop.webp" />
+      <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="hero-photo-desktop" alt="" aria-hidden="true" width="1000" height="1500" fetchpriority="high">
+    </picture>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
       <p class="hero-eyebrow">DJ Open Format · Locutor · Produtor de Áudio · São Paulo</p>
       <h1 class="hero-name">JOÃO GUILHERME / <span>DJ &amp; LOCUTOR</span></h1>
-      <p class="hero-tagline">O DJ que <span class="hl">lê a pista</span> e mantém todo mundo <span class="hl">dançando do início ao fim</span>, a voz que transita entre a curadoria musical, locução comercial e a produção de conteúdo pra rádio.</p>
+      <p class="hero-tagline">O DJ que <span class="hl">lê a pista</span> e mantém todo mundo <span class="hl">dançando do início ao fim</span>. E a voz por trás das chamadas da <span class="hl">Rádio Disney</span>.</p>
       <div class="hero-socials">
         <a href="https://www.instagram.com/olhaojg/" class="btn-social btn-ig" target="_blank" rel="noopener" aria-label="Instagram">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -895,39 +950,25 @@
       </button>
       <div class="shorts-grid" id="shorts-dj-track">
       <div class="shorts-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/CuhxdS9oQYw?rel=0"
-          title="DJ JG Bastidores 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
+        <button type="button" class="yt-lite" data-yt="CuhxdS9oQYw" data-title="DJ JG Bastidores 1" aria-label="Assistir: DJ JG Bastidores 1"><img src="https://i.ytimg.com/vi/CuhxdS9oQYw/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button>
       </div>
       <div class="shorts-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/EWGJuTbluVM?rel=0"
-          title="DJ JG Bastidores 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
+        <button type="button" class="yt-lite" data-yt="EWGJuTbluVM" data-title="DJ JG Bastidores 2" aria-label="Assistir: DJ JG Bastidores 2"><img src="https://i.ytimg.com/vi/EWGJuTbluVM/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button>
       </div>
       <div class="shorts-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/HZ-hBy8ojy8?rel=0"
-          title="DJ JG Bastidores 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
+        <button type="button" class="yt-lite" data-yt="HZ-hBy8ojy8" data-title="DJ JG Bastidores 3" aria-label="Assistir: DJ JG Bastidores 3"><img src="https://i.ytimg.com/vi/HZ-hBy8ojy8/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button>
       </div>
       <div class="shorts-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/-c8I2gdfzvI?rel=0"
-          title="DJ JG Bastidores 4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
+        <button type="button" class="yt-lite" data-yt="-c8I2gdfzvI" data-title="DJ JG Bastidores 4" aria-label="Assistir: DJ JG Bastidores 4"><img src="https://i.ytimg.com/vi/-c8I2gdfzvI/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button>
       </div>
       <div class="shorts-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/JQy-QXzSFzc?rel=0"
-          title="DJ JG Bastidores 5" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
+        <button type="button" class="yt-lite" data-yt="JQy-QXzSFzc" data-title="DJ JG Bastidores 5" aria-label="Assistir: DJ JG Bastidores 5"><img src="https://i.ytimg.com/vi/JQy-QXzSFzc/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button>
       </div>
       <div class="shorts-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/Lqqi7ixTduo?rel=0"
-          title="DJ JG Bastidores 6" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
+        <button type="button" class="yt-lite" data-yt="Lqqi7ixTduo" data-title="DJ JG Bastidores 6" aria-label="Assistir: DJ JG Bastidores 6"><img src="https://i.ytimg.com/vi/Lqqi7ixTduo/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button>
       </div>
       <div class="shorts-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/icW8xexFML8?rel=0"
-          title="DJ JG Bastidores 7" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
+        <button type="button" class="yt-lite" data-yt="icW8xexFML8" data-title="DJ JG Bastidores 7" aria-label="Assistir: DJ JG Bastidores 7"><img src="https://i.ytimg.com/vi/icW8xexFML8/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button>
       </div>
       </div>
       <button class="car-btn car-next" data-target="shorts-dj-track" aria-label="Próximo vídeo">
@@ -949,28 +990,16 @@
       </button>
       <div class="videos-grid" id="videos-track">
       <div class="video-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/DS-C0Ggli8Q?rel=0"
-          title="DJ JG Set 1"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
+        <button type="button" class="yt-lite" data-yt="DS-C0Ggli8Q" data-title="DJ JG Set 1" aria-label="Assistir: DJ JG Set 1"><img src="https://i.ytimg.com/vi/DS-C0Ggli8Q/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button>
       </div>
       <div class="video-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/ZHKGyBHpjj8?start=160&rel=0"
-          title="DJ JG Set 2"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
+        <button type="button" class="yt-lite" data-yt="ZHKGyBHpjj8" data-start="160" data-title="DJ JG Set 2" aria-label="Assistir: DJ JG Set 2"><img src="https://i.ytimg.com/vi/ZHKGyBHpjj8/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button>
       </div>
       <div class="video-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/hPC8IzIG3DI?start=1125&rel=0"
-          title="DJ JG Set 3"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
+        <button type="button" class="yt-lite" data-yt="hPC8IzIG3DI" data-start="1125" data-title="DJ JG Set 3" aria-label="Assistir: DJ JG Set 3"><img src="https://i.ytimg.com/vi/hPC8IzIG3DI/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button>
       </div>
       <div class="video-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/60c5QHqLXS8?start=833&rel=0"
-          title="DJ JG Set 4"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
+        <button type="button" class="yt-lite" data-yt="60c5QHqLXS8" data-start="833" data-title="DJ JG Set 4" aria-label="Assistir: DJ JG Set 4"><img src="https://i.ytimg.com/vi/60c5QHqLXS8/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button>
       </div>
       </div>
       <button class="car-btn car-next" data-target="videos-track" aria-label="Próximo vídeo">
@@ -993,7 +1022,7 @@
           <span class="onair-badge">No ar</span>
           <h2 class="locutor-headline">JG <span>Locutor</span></h2>
           <p class="locutor-bio">
-            Além da cabine, <strong>João Guilherme (JG)</strong> constrói carreira no rádio. Hoje está no projeto Artístico da <strong>Rádio Disney Brasil (91.3 FM)</strong>, em São Paulo, onde é voz das chamadas da rádio e está no projeto artístico da emissora.<br><br>
+            Além da cabine, <strong>João Guilherme (JG)</strong> constrói carreira no rádio. Hoje integra o projeto artístico da <strong>Rádio Disney Brasil (91.3 FM)</strong>, em São Paulo, onde é a voz das chamadas da emissora.<br><br>
             Antes disso, passou pela <strong>Rádio Maringá FM</strong> e pela <strong>Rádio Mix FM Maringá</strong>, o ponto de partida da sua relação com o microfone, no Paraná. Uma voz que transita entre a curadoria musical, a locução comercial e a produção de conteúdo pra rádio.
           </p>
           <div class="locutor-tags">
@@ -1002,12 +1031,12 @@
             <span class="locutor-tag">Rádio Disney Brasil</span>
             <span class="locutor-tag">Produção de Conteúdo</span>
           </div>
-          <a href="https://wa.me/5544991014758?text=Ol%C3%A1%2C%20quero%20falar%20sobre%20loca%C3%A7%C3%A3o%20com%20o%20JG!" class="locutor-cta" target="_blank" rel="noopener">
+          <a href="https://wa.me/5544991014758?text=Ol%C3%A1%2C%20quero%20falar%20sobre%20locu%C3%A7%C3%A3o%20com%20o%20JG!" class="locutor-cta" target="_blank" rel="noopener">
             Falar com JG ▸
           </a>
         </div>
         <div class="locutor-hero-photo">
-          <img src="LOCUTOR_JG_03.jpeg" alt="JG no microfone, locução ao vivo">
+          <img src="img/locutor-jg.webp" alt="JG no microfone, locução ao vivo" width="1350" height="900" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -1021,54 +1050,34 @@
         </button>
         <div class="shorts-grid" id="locutor-track">
         <div class="shorts-wrap">
-          <iframe src="https://www.youtube-nocookie.com/embed/hm28tzOwLXI?rel=0"
-            title="JG Locutor 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen loading="lazy"></iframe>
+          <button type="button" class="yt-lite" data-yt="hm28tzOwLXI" data-title="JG Locutor 1" aria-label="Assistir: JG Locutor 1"><img src="https://i.ytimg.com/vi/hm28tzOwLXI/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button>
         </div>
         <div class="shorts-wrap">
-          <iframe src="https://www.youtube-nocookie.com/embed/_Xc0bnCkOrw?rel=0"
-            title="JG Locutor 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen loading="lazy"></iframe>
+          <button type="button" class="yt-lite" data-yt="_Xc0bnCkOrw" data-title="JG Locutor 2" aria-label="Assistir: JG Locutor 2"><img src="https://i.ytimg.com/vi/_Xc0bnCkOrw/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button>
         </div>
         <div class="shorts-wrap">
-          <iframe src="https://www.youtube-nocookie.com/embed/P9XMCd3HA3U?rel=0"
-            title="JG Locutor 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen loading="lazy"></iframe>
+          <button type="button" class="yt-lite" data-yt="P9XMCd3HA3U" data-title="JG Locutor 3" aria-label="Assistir: JG Locutor 3"><img src="https://i.ytimg.com/vi/P9XMCd3HA3U/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button>
         </div>
         <div class="shorts-wrap">
-          <iframe src="https://www.youtube-nocookie.com/embed/5R0ml1z6Xp8?rel=0"
-            title="JG Locutor 4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen loading="lazy"></iframe>
+          <button type="button" class="yt-lite" data-yt="5R0ml1z6Xp8" data-title="JG Locutor 4" aria-label="Assistir: JG Locutor 4"><img src="https://i.ytimg.com/vi/5R0ml1z6Xp8/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button>
         </div>
         <div class="shorts-wrap">
-          <iframe src="https://www.youtube-nocookie.com/embed/EQXN0TT3vLM?rel=0"
-            title="JG Locutor 5" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen loading="lazy"></iframe>
+          <button type="button" class="yt-lite" data-yt="EQXN0TT3vLM" data-title="JG Locutor 5" aria-label="Assistir: JG Locutor 5"><img src="https://i.ytimg.com/vi/EQXN0TT3vLM/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button>
         </div>
         <div class="shorts-wrap">
-          <iframe src="https://www.youtube-nocookie.com/embed/uLBy2JZCBog?rel=0"
-            title="JG Locutor 6" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen loading="lazy"></iframe>
+          <button type="button" class="yt-lite" data-yt="uLBy2JZCBog" data-title="JG Locutor 6" aria-label="Assistir: JG Locutor 6"><img src="https://i.ytimg.com/vi/uLBy2JZCBog/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button>
         </div>
         <div class="shorts-wrap">
-          <iframe src="https://www.youtube-nocookie.com/embed/DTvCE5AzaVU?rel=0"
-            title="JG Locutor 7" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen loading="lazy"></iframe>
+          <button type="button" class="yt-lite" data-yt="DTvCE5AzaVU" data-title="JG Locutor 7" aria-label="Assistir: JG Locutor 7"><img src="https://i.ytimg.com/vi/DTvCE5AzaVU/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button>
         </div>
         <div class="shorts-wrap">
-          <iframe src="https://www.youtube-nocookie.com/embed/Ml_9lbHKVcA?rel=0"
-            title="JG Locutor 8" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen loading="lazy"></iframe>
+          <button type="button" class="yt-lite" data-yt="Ml_9lbHKVcA" data-title="JG Locutor 8" aria-label="Assistir: JG Locutor 8"><img src="https://i.ytimg.com/vi/Ml_9lbHKVcA/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button>
         </div>
         <div class="shorts-wrap">
-          <iframe src="https://www.youtube-nocookie.com/embed/oLB4omDwobM?rel=0"
-            title="JG Locutor 9" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen loading="lazy"></iframe>
+          <button type="button" class="yt-lite" data-yt="oLB4omDwobM" data-title="JG Locutor 9" aria-label="Assistir: JG Locutor 9"><img src="https://i.ytimg.com/vi/oLB4omDwobM/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button>
         </div>
         <div class="shorts-wrap">
-          <iframe src="https://www.youtube-nocookie.com/embed/XZBYNCpSNpM?rel=0"
-            title="JG Locutor 10" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen loading="lazy"></iframe>
+          <button type="button" class="yt-lite" data-yt="XZBYNCpSNpM" data-title="JG Locutor 10" aria-label="Assistir: JG Locutor 10"><img src="https://i.ytimg.com/vi/XZBYNCpSNpM/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button>
         </div>
         </div>
         <button class="car-btn car-next" data-target="locutor-track" aria-label="Próximo vídeo">
@@ -1156,6 +1165,42 @@
         });
       });
     });
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest && e.target.closest('.yt-lite');
+      if (!btn) return;
+      var src = 'https://www.youtube-nocookie.com/embed/' + btn.getAttribute('data-yt') +
+        '?autoplay=1&rel=0&playsinline=1';
+      var start = btn.getAttribute('data-start');
+      if (start) src += '&start=' + start;
+      var iframe = document.createElement('iframe');
+      iframe.src = src;
+      iframe.title = btn.getAttribute('data-title');
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      btn.parentNode.replaceChild(iframe, btn);
+    });
+    (function () {
+      var nav = document.querySelector('.mode-nav');
+      var loc = document.getElementById('locutor');
+      var djLink = document.querySelector('.mode-dj');
+      var locLink = document.querySelector('.mode-locutor');
+      if (!nav || !loc || !djLink || !locLink) return;
+      var ticking = false;
+      function update() {
+        ticking = false;
+        var line = nav.offsetHeight + window.innerHeight * 0.3;
+        var r = loc.getBoundingClientRect();
+        var onLoc = r.top <= line && r.bottom > line;
+        djLink.classList.toggle('is-active', !onLoc);
+        locLink.classList.toggle('is-active', onLoc);
+        if (onLoc) { locLink.setAttribute('aria-current', 'true'); djLink.removeAttribute('aria-current'); }
+        else { djLink.setAttribute('aria-current', 'true'); locLink.removeAttribute('aria-current'); }
+      }
+      function onScroll() { if (!ticking) { ticking = true; window.requestAnimationFrame(update); } }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      update();
+    })();
   </script>
 </body>
 </html>
